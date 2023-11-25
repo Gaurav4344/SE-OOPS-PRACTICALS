@@ -1,0 +1,86 @@
+// Write a function template selection Sort. Write a program that inputs, sorts and outputs
+// an integer array and a float array
+
+
+#include<iostream>
+using namespace std;
+
+template<class T>
+void Selection(T arr[] , T n){
+    int i,j,small;
+    T temp;
+    for(i=0;i<n;i++){
+        small=i;
+        for(j=i+1;j<n;j++){
+            if(arr[j]<arr[small]){
+                small=j;
+            }
+            temp=arr[small];
+            arr[small]=arr[i];
+            arr[i]=temp;
+        }
+    }
+}
+
+template<class t>
+void Display(t a[],t n){
+    int i;
+    for(i=0;i<n;i++){
+        cout<<a[i]<<" , "; 
+    }
+    cout<<endl;
+}
+
+
+int main(){
+    int n,i,choice;
+    float f;
+    int a[10];
+    float b[10];
+   
+
+    do{ 
+        cout<<endl<<"1.Integer \n2.Float \n3.Exit \nEnter your choice :-";
+        cin>>choice;       
+        switch(choice){
+
+            case 1:
+            cout<<endl<<"Enter the number of Integer Values you want to insert :-";
+            cin>>n;
+
+            for(i=0;i<n;i++){
+                cout<<"Enter the "<<i+1<<" element of the array :-";
+                cin>>a[i];
+            }
+
+            cout<<endl<<"Before Sorting :-"<<endl;
+            Display(a,n);
+            cout<<endl<<"After Sorting :-"<<endl;
+            Selection(a,n);
+            Display(a,n);
+            break;
+        
+            case 2:
+            cout<<endl<<"Enter the number of Float Values you want to insert :-";
+            cin>>f;
+
+            for(i=0;i<f;i++){
+                cout<<"Enter the "<<i+1<<" element of the array :-";
+                cin>>b[i];
+            }
+
+            cout<<endl<<"Before Sorting :-"<<endl;
+            Display(b,f);
+            cout<<endl<<"After Sorting :-"<<endl;
+            Selection(b,f);
+            Display(b,f);
+            break;
+
+            case 3:
+            cout<<endl<<"Thank You !";
+            break;
+        }
+
+    }while(choice!=3);
+
+}
