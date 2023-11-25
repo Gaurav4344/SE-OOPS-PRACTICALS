@@ -1,0 +1,127 @@
+// Imagine a publishing company which does marketing for book and audio cassette
+// versions. Create a class publication that stores the title (a string) and price (type float) of
+// a publication.
+// From this class derive two classes: book, which adds a page count (type int), and tape,
+// which adds a playing time in minutes (type float).
+// Write a program that instantiates the book and tape classes, allows user to enter data
+// and displays the data members. If an exception is caught, replace all the data member
+// values with zero values
+
+
+#include<iostream>
+using namespace std;
+
+class Publication{
+    private:
+    string title;
+    float price;
+
+    public:
+
+    void getdata(){
+        cout<<"Enter the title of the Publication:-";
+        cin>>title;
+        cout<<"Enter the price of the Publication:-";
+        cin>>price;
+    }
+
+    void Display(){
+        cout<<endl<<"Title is :-"<<title<<endl<<"Price is "<<price<<endl;
+    }
+
+
+};
+
+class Book : public Publication{
+    private:
+    int pg;
+
+    public:
+
+    void Pagecount(){
+        cout<<"Enter the total number of pages of the book :-";
+        cin>>pg;
+        try{
+            if(pg<=0){
+                throw(pg);
+            }
+        }catch(int pg){
+            cout<<"Invalid Page count";
+        }
+    }
+
+    void Display_Book(){
+        cout<<"Page count of the book is :-"<<pg<<endl;
+    }
+
+};
+
+class Tape : public Publication{
+    private:
+    float pt;
+
+    public:
+
+    void Playtime(){
+        cout<<"Enter the palying time of the audio cassette in minutes :-";
+        cin>>pt;
+        try{
+            if(pt<=0){
+            throw(pt);
+            }
+        }catch(float pt){
+            cout<<"Invalid Play time ";
+        }
+    }
+
+    void Display_Tape(){
+        cout<<"Play time of the tape is :-"<<pt<<endl;
+    }
+
+};
+
+int main(){
+    Book b1,b2;
+    Tape t1,t2;
+
+    int choice;
+
+    do{
+        cout<<endl<<"1.Add Information of the Books "<<endl;
+        cout<<"2.Add Information of the Tape "<<endl;
+        cout<<"3.Display Information of the Books "<<endl;
+        cout<<"4.Display Information of the Tape "<<endl;
+        cout<<"5.Exit"<<endl;
+        cout<<"Enter your chocie :-";
+        cin>>choice;
+
+        switch(choice){
+            case 1:
+            b1.getdata();
+            b1.Pagecount();
+            break;
+
+            case 2:
+            t1.getdata();
+            t1.Playtime();
+            break;
+
+            case 3:
+            b1.Display();
+            b1.Display_Book();
+            break;
+
+            case 4:
+            t1.Display();
+            t1.Display_Tape();
+            break;
+
+            case 5:
+            cout<<endl<<"Thank You !";
+            break;
+
+        }
+
+    }while(choice!=5);
+    
+}
