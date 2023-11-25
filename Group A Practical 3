@@ -1,0 +1,65 @@
+// Implement a class Complex which represents the Complex Number data type. Implement
+// the following
+// 1. Constructor (including a default constructor which creates the complex number 0+0i).
+// 2. Overloaded operator+ to add two complex numbers.
+// 3. Overloaded operator* to multiply two complex numbers.4. Overloaded << and >> to
+// print and read Complex Numbers.
+
+#include<iostream>
+using namespace std;
+
+class Complex{
+public:
+float real;
+float img;
+
+Complex():real(0),img(0){}
+
+void input(){
+cout<<"Enter the real part of the complex number :";
+cin>>real;
+cout<<"Enter the imaginary part of the complex number :";
+cin>>img;
+}
+
+Complex operator + (Complex c2){
+
+ Complex temp;
+ temp.real = real + c2.real;
+ temp.img = img + c2.img;
+ return temp;
+ }
+ 
+Complex operator * (Complex c2){
+
+ Complex temp;
+ temp.real = real * c2.real;
+ temp.img = img * c2.img;
+ return temp;
+}
+ 
+void Display(){
+cout<<real<<"+"<<img<<"i"<<endl;
+}
+};
+
+int main(){
+
+Complex c1,c2,result1,result2;
+
+cout<<"Enter the First complex :"<<endl;
+c1.input();
+cout<<"Enter the Second complex : "<<endl;
+c2.input();
+
+result1 = c1+c2;
+cout<<endl<<"The Addition of two complex number is :"<<endl;
+result1.Display();
+result2 = c1*c2;
+
+cout<<endl<<"The Multiplication of two complex number is :"<<endl;
+result2.Display();
+
+
+return 0;
+}
